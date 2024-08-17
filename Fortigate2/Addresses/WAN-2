@@ -1,0 +1,17 @@
+import requests
+import json
+
+url = "http://192.168.85.160/api/v2/cmdb/firewall/address"
+
+payload = json.dumps({
+  "name": "WAN-2",
+  "subnet": "5.2.2.0/255.255.255.0"
+})
+headers = {
+  'Content-Type': 'application/json',
+  'Authorization': '••••••'
+}
+
+response = requests.request("POST", url, headers=headers, data=payload)
+
+print(response.text)
