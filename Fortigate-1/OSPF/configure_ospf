@@ -1,0 +1,10 @@
+import requests
+
+url = "http://192.168.85.150/api/v2/cmdb/router/ospf"
+
+payload = "{\r\n  \"router-id\": \"2.2.2.2\",\r\n  \"area\": [\r\n    {\r\n      \"id\": \"0.0.0.0\",\r\n      \"interface\": [\r\n        {\r\n          \"interface-name\": \"port2\"\r\n        }\r\n      ]\r\n    }\r\n  ],\r\n  \"network\": [\r\n    {\r\n      \"prefix\": \"5.2.1.0 255.255.255.0\",\r\n      \"area\": \"0.0.0.0\"\r\n    }\r\n  ]\r\n}\r\n"
+headers = {}
+
+response = requests.request("PUT", url, headers=headers, data=payload)
+
+print(response.text)
