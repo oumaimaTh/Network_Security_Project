@@ -1,0 +1,18 @@
+import requests
+import json
+
+url = "http://192.168.85.160/api/v2/cmdb/router/static"
+
+payload = json.dumps({
+  "dst": "192.168.1.0/24",
+  "gateway": "5.2.2.2",
+  "device": "From-DataCenter"
+})
+headers = {
+  'Content-Type': 'application/json',
+  'Authorization': '••••••'
+}
+
+response = requests.request("POST", url, headers=headers, data=payload)
+
+print(response.text)
