@@ -1,0 +1,36 @@
+import requests
+import json
+
+url = "http://192.168.85.150/api/v2/cmdb/firewall/central-snat-map"
+
+payload = json.dumps({
+  "name": "Central-SNAT-Policy-2",
+  "orig-addr": [
+    {
+      "name": "Management"
+    }
+  ],
+  "srcintf": [
+    {
+      "name": "port1"
+    }
+  ],
+  "dst-addr": [
+    {
+      "name": "WAN-1"
+    }
+  ],
+  "dstintf": [
+    {
+      "name": "port2"
+    }
+  ]
+})
+headers = {
+  'Content-Type': 'application/json',
+  'Authorization': '••••••'
+}
+
+response = requests.request("POST", url, headers=headers, data=payload)
+
+print(response.text)
