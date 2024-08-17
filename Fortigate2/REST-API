@@ -1,0 +1,10 @@
+import requests
+
+url = "http://192.168.85.160/api/v2/cmdb/firewall/address?Access_token=9N7cz0dhbNGr6hz36hNfQQrgbNkr7k"
+
+payload = {}
+headers = {}
+
+response = requests.request("GET", url, headers=headers, data=payload)
+
+print(response.text)
