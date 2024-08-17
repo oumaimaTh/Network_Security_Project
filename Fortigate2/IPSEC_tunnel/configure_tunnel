@@ -1,0 +1,28 @@
+import requests
+import json
+
+url = "http://192.168.85.160/api/v2/cmdb/vpn.ipsec/phase1-interface"
+
+payload = json.dumps({
+  "name": "From-DataCenter",
+  "type": "dynamic",
+  "interface": "port2",
+  "remote-gw": "5.2.1.1",
+  "psksecret": "Ouma123*",
+  "proposal": "aes256-sha256",
+  "dhgrp": "14",
+  "keylife": 28800,
+  "dpd": {
+    "enable": True,
+    "interval": 30,
+    "timeout": 90
+  }
+})
+headers = {
+  'Content-Type': 'application/json',
+  'Authorization': '••••••'
+}
+
+response = requests.request("POST", url, headers=headers, data=payload)
+
+print(response.text)
