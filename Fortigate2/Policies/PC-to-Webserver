@@ -1,0 +1,44 @@
+import requests
+import json
+
+url = "http://192.168.85.160/api/v2/cmdb/firewall/policy"
+
+payload = json.dumps({
+  "name": "PC-to-Webserver",
+  "srcintf": [
+    {
+      "name": "port2"
+    }
+  ],
+  "dstintf": [
+    {
+      "name": "port3"
+    }
+  ],
+  "srcaddr": [
+    {
+      "name": "all"
+    }
+  ],
+  "dstaddr": [
+    {
+      "name": "DNAT-VIP"
+    }
+  ],
+  "action": "accept",
+  "schedule": "always",
+  "service": [
+    {
+      "name": "ALL"
+    }
+  ],
+  "nat": "disable"
+})
+headers = {
+  'Content-Type': 'application/json',
+  'Authorization': '••••••'
+}
+
+response = requests.request("POST", url, headers=headers, data=payload)
+
+print(response.text)
