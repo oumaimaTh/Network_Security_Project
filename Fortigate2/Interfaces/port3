@@ -1,0 +1,21 @@
+import requests
+import json
+
+url = "http://192.168.85.160/api/v2/cmdb/system/interface/port3"
+
+payload = json.dumps({
+  "name": "port3",
+  "ip": "192.168.2.254 255.255.255.0",
+  "allowaccess": "ping https ssh",
+  "vdom": "root",
+  "interface": "internal",
+  "status": "up"
+})
+headers = {
+  'Content-Type': 'application/json',
+  'Authorization': '••••••'
+}
+
+response = requests.request("PUT", url, headers=headers, data=payload)
+
+print(response.text)
