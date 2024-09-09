@@ -21,8 +21,8 @@ payload = json.dumps({
   "add-nat46-route": "enable",
   "mappedip": [
     {
-      "range": "192.168.2.2",
-      "q_origin_key": "192.168.2.2"
+      "range": "192.168.2.3",
+      "q_origin_key": "192.168.2.3"
     }
   ],
   "mapped-addr": "",
